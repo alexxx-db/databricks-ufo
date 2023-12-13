@@ -28,7 +28,7 @@ sc <- sparklyr::spark_connect(
 print(reticulate::py_config())
 
 ufos <-
-  dplyr::tbl(sc, dbplyr::in_catalog("demos", "nuforc", "nuforc_reports")) |>
+  dplyr::tbl(sc, dbplyr::in_catalog("r_workshop", "nuforc", "nuforc_reports")) |>
   dplyr::filter(!is.na(city_location)) |>
   dplyr::collect()
 

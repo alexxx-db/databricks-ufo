@@ -38,7 +38,7 @@ con <- dbConnect(
 Once connected, we can create a reference to the `nuforc` table. Functions executed against this reference will result in queries executed on Databricks.
 
 ```{r data}
-nuforc <- tbl(sc, in_catalog("demos", "nuforc", "nuforc_reports"))
+nuforc <- tbl(sc, in_catalog("r_workshop", "nuforc", "nuforc_reports"))
 head(nuforc) |> 
   show_query()
 ```

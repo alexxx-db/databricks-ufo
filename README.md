@@ -20,7 +20,7 @@ To build these apps, you must set up four components:
 ### Databricks catalog
 
 In this example, the UFO data is stored in a Databricks catalog table.
-Specifically under `demos` > `nuforc` > `nuforc_reports`.
+Specifically under `r_workshop` > `nuforc` > `nuforc_reports`.
 
 ### Databricks compute
 
