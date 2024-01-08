@@ -34,7 +34,7 @@ and install all the relevant packages.
 Note: later versions can be supposed,
 but the matching python package needs to be published on PyPI first: <https://pypi.org/project/databricks-connect/>
 
-### R environemnt set up
+### R environment set up
 
 Create a project-level `.Renviron` and define the following 3 variables:
 
@@ -57,6 +57,38 @@ without having to make modifications to the code.
 
 The Databricks Connect page: <https://spark.rstudio.com/deployment/databricks-connect.html>
 has a good overview of how to set up the R and Python package environment.
+
+## Connect to Databricks
+
+Once the environment variables are set up, you can connect to databricks using the `spark_connect()` function from `{sparklyr}`.
+
+```r
+library(sparklyr)
+
+sc <- spark_connect(
+  cluster_id = "Enter here your cluster ID",
+  method = "databricks_connect"
+)
+```
+
+The `DATABRICKS_HOST` and `DATABRICKS_TOKEN` environment variables are passed in for you automatically.
+
+If you are working on a collborative project,
+having the Cluster ID as an environment variable (e.g., `DATABRICKS_CLUSTER_ID`) is also useful.
+This way teammembers do not need to constantly edit the ID as the code base changes.
+
+```r
+library(sparklyr)
+
+sc <- spark_connect(
+  cluster_id = Sys.getenv("DATABRICKS_CLUSTER_ID"),
+  method = "databricks_connect"
+)
+```
+
+All of the demo examples in this repository use the `spark_connect()` function to connect to Databricks to query and pull down the required data.
+
+See the First Time Connecting section in the Sparklyr documentation for more information: <https://spark.rstudio.com/deployment/databricks-connect.html#first-time-connecting>
 
 ## Deploy application to Connect
 
